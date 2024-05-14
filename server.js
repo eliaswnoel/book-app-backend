@@ -9,6 +9,7 @@ const app = express();
 const cors = require('cors');
 const morgan = require('morgan')
 const bookRouter = require('./routes/books')
+const listRouter = require('./routes/lists')
 
 // TODO:
 app.use(express.urlencoded({ extended: true }))
@@ -18,6 +19,9 @@ app.use(cors({
   }))
 app.use(morgan('dev'))
 app.use('/books', bookRouter)
+app.use('/log', listRouter)
+app.use('/wishlist', listRouter)
+
 
 
 // create a test route
