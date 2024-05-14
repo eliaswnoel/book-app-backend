@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const BookSchema = new Schema ({
     name: String,
     image: String, //image URLs
-    review: String,
+    summary: String,
     rating: {
         type: Number,
         min: 1,
