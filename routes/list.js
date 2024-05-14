@@ -6,7 +6,7 @@ const listRouter = require('../controllers/lists')
 
 
 router.get('/', listRouter.getList)
-router.post('/', listRouter.addToLog)
+router.post('/', listRouter.addToList)
 
 
 module.exports = router
