@@ -1,4 +1,4 @@
-const express = require('express');
+// const express = require('express');
 const { List } = require('../models')
 
 const list = {
@@ -26,15 +26,28 @@ const list = {
         }
     },
 
-    getWishlist: async (req, res) => {
+    getList: async (req, res) => {
+    //getWishlist: async (req, res) => {
+         const listType = req.query.type || 'Log';
+         console.log("--------", listType)
         try {
-            const wishlist = await List.find({ type: 'Wishlist' }).populate('book');
-            res.json(wishlist);
+            const list = await List.find({}); //type: listType });//.populate('book');
+            res.json(list);
         } catch (error) {
             console.error('Error getting wishlist:', error);
-            res.status(500).json({ error: 'Failed to get wishlist' });
+            res.status(500).json({ error: `Failed to get list type = ${listType}` });
         }
     },
+    getWishlist: async (req, res) => {
+             const type = req.params.type || 'log';
+            try {
+                const list = await List.find({ type: type }).populate('book');
+                res.json(list);
+            } catch (error) {
+                console.error('Error getting wishlist:', error);
+                res.status(500).json({ error: 'Failed to get wishlist' });
+            }
+        },
 
     // Get log
     getLog: async (req, res) => {
