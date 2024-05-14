@@ -13,7 +13,7 @@ const create = async (req, res, next) => {
     try {
         res.json(await Book.create(req.body))
     } catch (error) {
-        res.json(400).json(error)
+        es.status(400).json(error);
     }
 }
 
@@ -23,4 +23,10 @@ const show = async (req, res, next) => {
     } catch (error) {
         res.status(400).json(error);
     }
+};
+
+module.exports = {
+    index,
+    create,
+    show
 };

@@ -5,10 +5,19 @@ require('./config/db.connection.js')
 const { PORT } = process.env;
 const express = require("express");
 const app = express();
-const cors = require('cors')
+//TODO: look into thos some more
+const cors = require('cors');
 const morgan = require('morgan')
+const bookRouter = require('./routes/books')
 
-
+// TODO:
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(cors({
+    origin:"*"
+  }))
+app.use(morgan('dev'))
+app.use('/books', bookRouter)
 
 
 // create a test route
