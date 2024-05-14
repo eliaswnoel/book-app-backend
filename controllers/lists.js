@@ -7,10 +7,10 @@ const list = {
             const {bookId} = req.body;
             const list = new List({ type: 'Wishlist', book: bookId });
             await list.save();
-            res.status(200).json({message: "Book Added!"});
+            res.status(201).json({message: "Book Added!"});
         } catch(error) {
             console.error('Error adding book to log:', error);
-            res.status(400).json({ error: 'Failed to add book to wishlist' });
+            res.status(500).json({ error: 'Failed to add book to wishlist' });
         }
     },
 
@@ -19,10 +19,10 @@ const list = {
             const {bookId} = req.body;
             const list = new List({ type: 'Log', book: bookId });
             await list.save();
-            res.status(200).json({ message: 'Book added to log successfully' });
+            res.status(201).json({ message: 'Book added to log successfully' });
         } catch (error) {
             console.error('Error adding book to log:', error)
-            res.status(400).json({ error: 'Failed to add book to wishlist' });
+            res.status(500).json({ error: 'Failed to add book to wishlist' });
         }
     },
 
@@ -32,7 +32,7 @@ const list = {
             res.json(wishlist);
         } catch (error) {
             console.error('Error getting wishlist:', error);
-            res.status(400).json({ error: 'Failed to get wishlist' });
+            res.status(500).json({ error: 'Failed to get wishlist' });
         }
     },
 
@@ -43,7 +43,7 @@ const list = {
             res.json(log);
         } catch (error) {
             console.error('Error getting log:', error);
-            res.status(400).json({ error: 'Failed to getlog' });
+            res.status(500).json({ error: 'Failed to getlog' });
         }
     }
 };

@@ -9,8 +9,8 @@ router.get('/wishlist', listRouter.addToWishlist)
 router.post('/wishlist', listRouter.addToWishlist)
 
 //log routes
-router.get('/log', listRouter.addToWishlist)
-router.post('/log', listRouter.addToWishlist)
+router.get('/log', listRouter.addToLog)
+router.post('/log', listRouter.addToLog)
 
 
 module.exports = router
