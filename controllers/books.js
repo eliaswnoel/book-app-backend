@@ -13,7 +13,16 @@ const create = async (req, res, next) => {
     try {
         res.json(await Book.create(req.body))
     } catch (error) {
-        es.status(400).json(error);
+        res.status(400).json(error);
+    }
+}
+
+const destroy = async (req, res, next) => {
+    try {
+        res.json(await Book.findByIdAndDelete(req.params.id))
+    } catch (error) {
+        res.status(400).json(error)
+
     }
 }
 
@@ -28,5 +37,6 @@ const show = async (req, res, next) => {
 module.exports = {
     index,
     create,
-    show
+    show,
+    delete: destroy,
 };
