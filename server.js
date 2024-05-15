@@ -10,7 +10,7 @@ const cors = require('cors');
 const morgan = require('morgan')
 const bookRouter = require('./routes/books')
 const wishlistRouter = require('./routes/wishlist')
-// const listRouter = require('./routes/list.js')
+
 
 // TODO:
 app.use(express.urlencoded({ extended: true }))
@@ -21,7 +21,7 @@ app.use(cors({
 app.use(morgan('dev'))
 app.use('/books', bookRouter)
 app.use('/wishlist', wishlistRouter)
-// app.use('/list', listRouter)
+
 
 
 
