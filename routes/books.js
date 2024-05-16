@@ -7,7 +7,8 @@ const bookRouter = require('../controllers/books')
 router.get('/', bookRouter.index)
 router.post('/', bookRouter.create)
 router.get('/:id', bookRouter.show)
-router.delete('/:id', bookRouter.delete);
+router.delete('/:id', bookRouter.delete)
+router.put('/:id', bookRouter.update);
 
 
 

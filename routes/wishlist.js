@@ -7,6 +7,8 @@ const wishlistRouter = require('../controllers/wishlist')
 router.get('/', wishlistRouter.index)
 router.post('/', wishlistRouter.create)
 router.get('/:id', wishlistRouter.show)
+router.delete('/:id', wishlistRouter.delete)
+router.put('/:id', wishlistRouter.update);
 
 
 

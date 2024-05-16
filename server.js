@@ -10,6 +10,7 @@ const cors = require('cors');
 const morgan = require('morgan')
 const bookRouter = require('./routes/books')
 const wishlistRouter = require('./routes/wishlist')
+const reviewRouter = require('./routes/reviews')
 
 
 // TODO:
@@ -21,6 +22,7 @@ app.use(cors({
 app.use(morgan('dev'))
 app.use('/books', bookRouter)
 app.use('/wishlist', wishlistRouter)
+app.use('/reviews', reviewRouter)
 
 
 
