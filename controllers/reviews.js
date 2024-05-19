@@ -1,3 +1,5 @@
+const express = require('express');
+const router = express.Router(); 
 const { Review } = require('../models')
 
 const index = async (req, res, next) => {
@@ -40,6 +42,20 @@ const update = async (req, res, next) => {
         res.status(400).json(error);
     }
 }
+
+//For review id
+router.get('/:id', async (req, res) => {
+    try {
+        const review = await Review.findById(req.params.id);
+        if (!review) {
+            return res.status(404).json({ message: "Review not found" });
+        }
+        res.json(review);
+    } catch (error) {
+        console.error('Error fetching review:', error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
 
 
 

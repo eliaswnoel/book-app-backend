@@ -13,7 +13,7 @@ const create = async (req, res, next) => {
     try {
         res.json(await Wishlist.create(req.body))
     } catch (error) {
-        es.status(400).json(error);
+        res.status(400).json(error);
     }
 }
 
@@ -44,10 +44,11 @@ const update = async (req, res, next) => {
 
 
 
+
 module.exports = {
     index,
     create,
     show,
     delete: destroy,
-    update
+    update,
 };
