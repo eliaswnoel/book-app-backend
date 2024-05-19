@@ -11,6 +11,7 @@ const morgan = require('morgan')
 const bookRouter = require('./routes/books')
 const wishlistRouter = require('./routes/wishlist')
 const reviewRouter = require('./routes/reviews')
+const authRouter = require('./routes/auth')
 
 
 // TODO:
@@ -23,6 +24,7 @@ app.use(morgan('dev'))
 app.use('/books', bookRouter)
 app.use('/wishlist', wishlistRouter)
 app.use('/reviews', reviewRouter)
+app.use('/auth', authRouter)
 
 
 

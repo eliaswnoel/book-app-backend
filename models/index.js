@@ -1,6 +1,7 @@
 module.exports = {
     Book: require('./Book'),
     Wishlist: require('./Wishlist'),
-    Review: require('./Review'),
+    Reviews: require('./Review'),
+    User: require('./User')
     // List: require('./List')
 }
