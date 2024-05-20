@@ -30,6 +30,8 @@ const Login = async (req, res) => {
 }
 
 const Register = async (req, res) => {
+    console.log(req.body)
+    console.log('banana')
   try {
     const { email, password, name } = req.body
     let passwordDigest = await middleware.hashPassword(password)

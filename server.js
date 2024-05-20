@@ -5,12 +5,12 @@ require('./config/db.connection.js')
 const { PORT } = process.env;
 const express = require("express");
 const app = express();
-//TODO: look into thos some more
 const cors = require('cors');
 const morgan = require('morgan')
 const bookRouter = require('./routes/books')
 const wishlistRouter = require('./routes/wishlist')
 const reviewRouter = require('./routes/reviews')
+const favoriteRouter = require('./routes/favorite')
 const authRouter = require('./routes/auth')
 
 
@@ -24,6 +24,7 @@ app.use(morgan('dev'))
 app.use('/books', bookRouter)
 app.use('/wishlist', wishlistRouter)
 app.use('/reviews', reviewRouter)
+app.use('/favorites', favoriteRouter)
 app.use('/auth', authRouter)
 
 
