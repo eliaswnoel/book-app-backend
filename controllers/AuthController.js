@@ -49,9 +49,21 @@ const Register = async (req, res) => {
 }
 }
 
+//session
+const Session = async (req, res) => {
+    try {
+      // Your session logic here
+      res.send("Session route reached!");
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ status: 'Error', msg: 'Internal Server Error' });
+    }
+  }
+
 
 module.exports = {
   Login,
   Register,
+  Session
 
 }
