@@ -1,59 +1,54 @@
-const { Favorite } = require('../models');
-const { Book } = require('../models'); 
-const { User } = require('../models'); 
+// const express = require('express')
+const { Favorite } = require('../models')
 
-// Add a book to favorites
-const addFavorite = async (req, res, next) => {
-    const { userId, bookId } = req.body;
-
+const index = async (req, res, next) => {
     try {
-        // Check if the favorite already exists
-        const existingFavorite = await Favorite.findOne({ userId, bookId });
-        if (existingFavorite) {
-            return res.status(400).json({ message: 'Book is already in favorites' });
-        }
-
-        // Create a new favorite entry
-        const favorite = new Favorite({ userId, bookId });
-        await favorite.save();
-        res.status(201).json(favorite);
+        res.json(await Favorite.find({}))
     } catch (error) {
-        res.status(500).json({ message: 'Server error', error });
+        res.status(400).json(error)
     }
-};
+}
 
-// Remove a book from favorites
-const removeFavorite = async (req, res, next) => {
-    const { userId, bookId } = req.body;
-
+const create = async (req, res, next) => {
+    console.log(req)
     try {
-        // Find and delete the favorite entry
-        const favorite = await Favorite.findOneAndDelete({ userId, bookId });
-        if (!favorite) {
-            return res.status(404).json({ message: 'Favorite not found' });
-        }
-
-        res.status(204).send();
+        res.json(await Favorite.create(req.body))
     } catch (error) {
-        res.status(500).json({ message: 'Server error', error });
+        res.status(400).json(error);
     }
-};
+}
 
-// Get a user's favorite books
-const getUserFavorites = async (req, res, next) => {
-    const { userId } = req.params;
-
+const destroy = async (req, res, next) => {
     try {
-        // Find all favorite entries for the user and populate book details
-        const favorites = await Favorite.find({ userId }).populate('bookId');
-        res.status(200).json(favorites);
+        res.json(await Favorite.findByIdAndDelete(req.params.id))
     } catch (error) {
-        res.status(500).json({ message: 'Server error', error });
+        res.status(400).json(error)
+
     }
-};
+}
+
+const show = async (req, res, next) => {
+    try {
+        res.json(await Favorite.findById(req.params.id));
+    } catch (error) {
+        res.status(400).json(error);
+    }
+}
+
+const update = async (req, res, next) => {
+    try {
+        res.json(await Favorite.findById(req.params.id));
+    } catch (error) {
+        res.status(400).json(error);
+    }
+}
+
+
 
 module.exports = {
-    addFavorite,
-    removeFavorite,
-    getUserFavorites
+    index,
+    create,
+    show,
+    delete: destroy,
+    update
 };
