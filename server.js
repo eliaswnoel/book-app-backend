@@ -9,7 +9,7 @@ const cors = require('cors');
 const morgan = require('morgan')
 const bookRouter = require('./routes/books')
 const wishlistRouter = require('./routes/wishlist')
-const reviewRouter = require('./routes/reviews')
+const reviewRouter = require('./routes/review.js')
 const favoriteRouter = require('./routes/favorite')
 const authRouter = require('./routes/auth')
 

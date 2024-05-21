@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const reviewRouter = require('../controllers/reviews')
+const reviewRouter = require('../controllers/review')
 
 //book routes
 router.get('/', reviewRouter.index)

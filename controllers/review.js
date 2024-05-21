@@ -14,6 +14,7 @@ const create = async (req, res, next) => {
     try {
         res.json(await Review.create(req.body))
     } catch (error) {
+        console.log(error)
         res.status(400).json(error);
     }
 }

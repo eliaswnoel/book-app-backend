@@ -43,12 +43,15 @@ const Register = async (req, res) => {
     return res.send(user)
   }
 
-} catch (error) {
-    throw error
+    } catch (error) {
+    console.log(error)
+    res.status(400).json(error);
 }
 }
 
+
 module.exports = {
   Login,
-  Register
+  Register,
+
 }
