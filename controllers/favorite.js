@@ -1,9 +1,16 @@
 // const express = require('express')
-const { Favorite } = require('../models')
+const { Favorite, Book } = require('../models')
 
 const index = async (req, res, next) => {
     try {
-        res.json(await Favorite.find({}))
+        const favorites = (await Favorite.find({}));
+        console.log('test')
+        const bookIds = [] 
+        favorites.forEach((favorite) => {bookIds.push(favorite.bookId)})
+        const books = await Book.find({_id: {$in: bookIds}})
+        console.log(books)
+        console.log('test')
+        res.json(books)
     } catch (error) {
         res.status(400).json(error)
     }
@@ -14,6 +21,7 @@ const create = async (req, res, next) => {
     try {
         res.json(await Favorite.create(req.body))
     } catch (error) {
+        console.log(error)
         res.status(400).json(error);
     }
 }
@@ -29,6 +37,10 @@ const destroy = async (req, res, next) => {
 
 const show = async (req, res, next) => {
     try {
+        const favorites = (await Favorite.findById(req.params.id));
+        const bookIds = favorites.map(({bookId}) => id)
+        console.log(bookIds)
+        console.log('test')
         res.json(await Favorite.findById(req.params.id));
     } catch (error) {
         res.status(400).json(error);
